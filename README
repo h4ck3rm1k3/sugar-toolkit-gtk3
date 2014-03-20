@@ -1,3 +1,40 @@
 Sugar is the core of the OLPC Human Interface. The toolkit provides
 a set of widgets to build HIG compliant applications and interfaces
 to interact with system services like presence and the datastore.
+
+
+Usage
+=====
+
+In order to use this library without installing :
+
+First you need to build sugar and install into a dir:
+```
+git clone git@github.com:h4ck3rm1k3/sugar.git
+./autogen.sh  --prefix=`pwd`/dist
+make install
+mkdir ~/schemas/
+cp dist/share/glib-2.0/schemas/gschemas.compiled ~/schemas/
+```
+
+datastore service
+=================
+Needs datastore service :
+
+  git clone https://src.sugarlabs.org/sugar-datastore/mainline  sugar-datastore
+  cd sugar-datastore
+  make
+  make install
+  cd dist/
+  PYTHONPATH=~/experiments/osm/sugar-toolkit-gtk3/src/:./lib/python2.7/site-packages/ ./bin/datastore-service 
+
+PYTHONPATH=~/experiments/osm/sugar-toolkit-gtk3/src/:./lib/python2.7/site-packages/ ./bin/datastore-service 
+
+
+Running example Paint App :
+===========================
+git clone gitorious@git.sugarlabs.org:~h4ck3rm1k3/paint/h4ck3rm1k3s-paint.git
+```
+GSETTINGS_SCHEMA_DIR=~/schemas/ PYTHONPATH=~/sugar-toolkit-gtk3/src/ SUGAR_LOGGER_LEVEL=10 SUGAR_BUNDLE_PATH=~/paint-activity python  ./bin/sugar-activity   OficinaActivity.OficinaActivity
+```
+
